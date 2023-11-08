@@ -1,0 +1,42 @@
+server:
+  port: 8080
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://eureka-service:8761/eureka
+  instance:
+    hostname: localhost
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      routes:
+        - id: cuota-service
+          uri: lb://cuota-service
+          predicates:
+            - Path=/cuotas/**
+        - id: estudiante-service
+          uri: lb://estudiante-service
+          predicates:
+            - Path=/estudiantes/**
+        - id: prueba-service
+          uri: lb://prueba-service
+          predicates:
+            - Path=/pruebas/**
+        - id: planilla-service
+          uri: lb://planilla-service
+          predicates:
+            - Path=/planilla/**
