@@ -3,25 +3,52 @@ package com.example.planillaservice.services;
 import com.example.planillaservice.entities.PlanillaEntity;
 import com.example.planillaservice.repositories.PlanillaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
+
+import org.springframework.http.HttpMethod;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import com.example.planillaservice.models.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 @Service
 public class PlanillaService {
     @Autowired
     PlanillaRepository planillaRepository;
+    @Autowired
+    RestTemplate restTemplate;
 
-    /*@Autowired
-    CuotaService cuotaService;
-    @Autowired
-    PruebaService pruebaService;
-    @Autowired
-    EstudianteService estudianteService; //para obtener nombre, rut
-     */
+    public List<CuotaModel> obtenerCuotas(){
+        ResponseEntity<List<CuotaModel>> response = restTemplate.exchange(
+                "http://cuota-service/cuotas", HttpMethod.GET,null,
+                new ParameterizedTypeReference<List<CuotaModel>>(){}
+        );
+        List<CuotaModel> retorno= response.getBody();
+        return retorno;
+    }
+    public List<PruebaModel> obtenerPruebas(){
+        ResponseEntity<List<PruebaModel>> response = restTemplate.exchange(
+                "http://prueba-service/pruebas", HttpMethod.GET,null,
+                new ParameterizedTypeReference<List<PruebaModel>>(){}
+        );
+        List<PruebaModel> retorno= response.getBody();
+        return retorno;
+    }
+    public List<EstudianteModel> obtenerEstudiantes(){
+        ResponseEntity<List<EstudianteModel>> response = restTemplate.exchange(
+                "http://estudiante-service/estudiantes", HttpMethod.GET,null,
+                new ParameterizedTypeReference<List<EstudianteModel>>(){}
+        );
+        List<EstudianteModel> retorno= response.getBody();
+        return retorno;
+    }
+
     public ArrayList<PlanillaEntity> obtenerPlanillas(){
         return (ArrayList<PlanillaEntity>) planillaRepository.findAll();
     }
@@ -36,7 +63,6 @@ public class PlanillaService {
         return planillas;
     }
 
-    //falta hacer test
     public String tipoCuota(int cantCuota){
         if(cantCuota<=0){
             return "Error";
@@ -47,8 +73,9 @@ public class PlanillaService {
             return "Cuotas";
         }
     }
-    /*
-    public float mesesAtraso(int mesActual,int mesCuota,CuotaEntity cuotaEntity){
+
+
+    public float mesesAtraso(int mesActual,int mesCuota,CuotaModel cuotaEntity){
 
         if((mesActual-mesCuota)==1){
             //1
@@ -77,7 +104,7 @@ public class PlanillaService {
         return (float) 1;
         //si el mes actual es menor o igual al mes de la cuota, se retorna el 1
     }
-    public float descuento(int puntaje,CuotaEntity cuotaEntity){
+    public float descuento(int puntaje,CuotaModel cuotaEntity){
         //revisar los puntajes y aplicar dcto
         cuotaEntity.setRebajada(1);//marco ocomo realizado el dcto
         if(puntaje>=950){
@@ -94,11 +121,44 @@ public class PlanillaService {
         }
         return (float) 1;// puntajes mejores a 850
     }
+    public List<CuotaModel> filtrarCuotas(int id, List<CuotaModel> cuotas){
+        List<CuotaModel> filtradas = new ArrayList<>();
+        for (CuotaModel cuota : cuotas) {
+            if (cuota.getIdEstudiante() == id) {
+                filtradas.add(cuota);
+            }
+        }
+        return filtradas;
+    }
+    public List<PruebaModel> filtrarPruebas(int id, List<PruebaModel> pruebas){
+        List<PruebaModel> filtradas = new ArrayList<>();
+        for (PruebaModel prueba : pruebas) {
+            if (prueba.getIdEstudiante() == id) {
+                filtradas.add(prueba);
+            }
+        }
+        return filtradas;
+    }
+    public EstudianteModel obtenerAlumno(long id){
+        List<EstudianteModel> todos= obtenerEstudiantes();
+        for(int i=0;i<todos.size();i++){
+            if(todos.get(i).getId().equals(id)){
+                return todos.get(i);
+            }
+        }
+        return null;
+    }
     public String calcularPlanillaE(int id){
-        //obtener cuotas
-        ArrayList<CuotaEntity> cuotas = cuotaService.obtenerCuotasEstudiante(id);
-        //obtener pruebas
-        ArrayList<PruebaEntity> pruebas = pruebaService.obtenerPruebasEstudiante(id);
+        //obtener todas las cuotas
+        List<CuotaModel> cuotas = obtenerCuotas();
+        List<CuotaModel> cuotasAlumno = filtrarCuotas(id,cuotas);
+
+        //obtener todas las pruebas
+        List<PruebaModel> pruebas =obtenerPruebas();
+        List<PruebaModel> pruebasAlumno = filtrarPruebas(id,pruebas);
+
+        //obtener los datos del alumno segun su id
+        EstudianteModel alumno = obtenerAlumno(id);
         ///////////si no hay pruebas o cuotas//////
         if(cuotas.isEmpty() || pruebas.isEmpty()){ //return al index
             return "Error";
@@ -175,8 +235,8 @@ public class PlanillaService {
         //////////////////////////////////////////////////////
         //Esto es lo que se muestra al usuario en el reporte
 
-        planillaEntity.setNombreEstudiante(estudianteService.obtenerNombreEstudiante(id));
-        planillaEntity.setRutEstudiante(estudianteService.obtenerRutEstudiante(id));
+        planillaEntity.setNombreEstudiante(alumno.getNombre());
+        planillaEntity.setRutEstudiante(alumno.getRut());
         planillaEntity.setCantidadPruebasRendidas(cantPrueba);
         planillaEntity.setPromedioPruebas(promedio);
         planillaEntity.setTipoPago(tipoPago);
@@ -189,5 +249,5 @@ public class PlanillaService {
         planillaRepository.save(planillaEntity);
         //se direcciona al index
         return "index";
-    }*/
+    }
 }
