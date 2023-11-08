@@ -1,20 +1,13 @@
-package com.example.estudianteservice.entities;
-import javax.persistence.*;
+package com.example.planillaservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "estudiante")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstudianteEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
-    private Long id;
+public class EstudianteModel {
     private String apellido;
     private String nombre;
     private String rut;

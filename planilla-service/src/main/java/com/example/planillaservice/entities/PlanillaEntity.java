@@ -1,4 +1,4 @@
-package main.java.com.example.planillaservice.entities;
+package com.example.planillaservice.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

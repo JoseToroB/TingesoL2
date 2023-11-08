@@ -1,4 +1,4 @@
-package main.java.com.example.pruebaservice.entities;
+package com.example.pruebaservice.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
