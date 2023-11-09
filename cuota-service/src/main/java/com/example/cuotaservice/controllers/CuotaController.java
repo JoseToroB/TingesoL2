@@ -2,16 +2,16 @@ package com.example.cuotaservice.controllers;
 
 import com.example.cuotaservice.services.CuotaService;
 import com.example.cuotaservice.entities.CuotaEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cuotas")
+@RequestMapping("/cuota")
 public class CuotaController{
     @Autowired
     CuotaService cuotaService;
@@ -25,12 +25,12 @@ public class CuotaController{
        return ResponseEntity.ok(cuotas);
     }
 
-    @PostMapping
+    @PostMapping("/borrarCuotas")
     public void borrarTodo(){
         cuotaService.borrarTodo();
     }
 
-    @PostMapping
+    @PostMapping("/crearCuota")
     public void crearCuota(@RequestBody CuotaEntity cuota){
         cuotaService.guardarCuota(cuota);
     }
