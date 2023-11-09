@@ -24,12 +24,10 @@ public class EstudianteController {
         return ResponseEntity.ok(estudiantes);
     }
     @PostMapping("/crearEstudiante")
-    public String crearEstudiante(@ModelAttribute("estudiante")EstudianteEntity estudiante, Model model){
+    public void crearEstudiante(@ModelAttribute("estudiante")EstudianteEntity estudiante){
         estudianteService.guardarEstudiante(estudiante);
-        model.addAttribute("estudiante",estudiante);
-        return "index";
     }
-    @PostMapping("/borrarEstudiante")
+    @PostMapping("/borrarEstudiantes")
     public void vaciarEstudiantes(){
         estudianteService.borrarTodo();
     }

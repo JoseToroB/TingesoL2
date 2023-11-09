@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+:root {
+  --text: #e9f0fc;
+  --background: #040c1a;
+  --primary: #276add;
+  --secondary: #050e1f;
+  --accent: #2061cf;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Estilos para el modo oscuro */
+body {
+  background-color: var(--background) !important;
+  color: var(--text);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  color: var(--text) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Estilos para los enlaces visitados */
+a:visited {
+  color: var(--secondary);
 }
 
-.App-link {
-  color: #61dafb;
+/* Estilos para los encabezados */
+h1, h2, h3, h4, h5, h6, label {
+  color: var(--text) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilos para los botones */
+button, input[type="submit"] {
+  background-color: var(--primary);
+  color: var(--text) !important;
+}
+
+/* Estilos para los inputs */
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea {
+  background-color: var(--secondary);
+  color: var(--text) !important;
+  border-color: var(--accent);
+}
+
+/* Estilos para los placeholders de los inputs */
+::-webkit-input-placeholder {
+  color: #AAAAAA;
+}
+
+:-moz-placeholder {
+  color: #AAAAAA;
+}
+
+::-moz-placeholder {
+  color: #AAAAAA;
+}
+
+:-ms-input-placeholder {
+  color: #AAAAAA;
 }

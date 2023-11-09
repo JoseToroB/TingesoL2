@@ -18,8 +18,8 @@ public class EstudianteEntity {
     private String apellido;
     private String nombre;
     private String rut;
-    private String fechaNacimiento; //dd-mm-yyyy
+    private String fechaNacimiento; 
     private String nombreColegio;
     private int anioEgreso;
-    private int tipoColegio; //1 muni - 2 sub  - 3 priv
+    private int tipoColegio; 
 }

@@ -33,14 +33,13 @@ public class PruebaController {
         }
         return ResponseEntity.ok(pruebas);
     }
-    @PostMapping
+    @PostMapping("/borrarTodo")
     public void borrarTodo(){
         pruebaService.borrarTodo();
     }
     @PostMapping("/subirNotas")
-    public String cargarExcel(@RequestParam("prueba") MultipartFile file, RedirectAttributes ms){
+    public String cargarExcel(@RequestParam("prueba") MultipartFile file){
         pruebaService.save(file);
-        ms.addFlashAttribute("mensaje","Archivo subido!");
         return "index";
     }
 

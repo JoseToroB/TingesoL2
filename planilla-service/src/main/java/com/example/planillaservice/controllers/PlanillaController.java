@@ -33,7 +33,7 @@ public class PlanillaController {
         model.addAttribute("planillas",planillas);
         return "mostrarResumen";
     }*/
-    @PostMapping
+    @PostMapping("/borrarTodo")
     public void borrarTodo(){
         planillaService.borrarTodo();
     }
