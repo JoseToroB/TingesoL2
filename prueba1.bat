@@ -1,0 +1,1 @@
+start /wait /D prueba-service mvnw clean install -Dtest -DfailIfNoTests=false -f pom.xml

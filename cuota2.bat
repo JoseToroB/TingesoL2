@@ -1,0 +1,1 @@
+docker build -f cuota-service/Dockerfile -t josetorob/cuota-service:latest ./cuota-service

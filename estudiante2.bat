@@ -1,0 +1,1 @@
+docker build -f estudiante-service/Dockerfile -t josetorob/estudiante-service:latest ./estudiante-service

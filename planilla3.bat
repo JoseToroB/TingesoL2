@@ -1,0 +1,1 @@
+docker push josetorob/planilla-service:latest

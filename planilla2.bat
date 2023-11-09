@@ -1,0 +1,1 @@
+docker build -f planilla-service/Dockerfile -t josetorob/planilla-service:latest ./planilla-service
