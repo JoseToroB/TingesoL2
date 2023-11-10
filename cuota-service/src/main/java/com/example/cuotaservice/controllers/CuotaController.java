@@ -34,12 +34,9 @@ public class CuotaController{
     public void crearCuota(@RequestBody CuotaEntity cuota){
         cuotaService.guardarCuota(cuota);
     }
-    /*
-    listar cuotas por id/rut alumno
-     */
 
     /*
-    modificar cuota de alumno
+    modificar cuota segun la id
      */
 
 }
