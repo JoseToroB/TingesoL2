@@ -9,19 +9,20 @@ class ListaEstudiantesComponent extends Component {
             estudiantes: []
         };
     }
-
     componentDidMount() {
         EstudianteService.obtenerEstudiantes().then((res) => {
             this.setState({ estudiantes: res.data });
         });
+        
     }
+    
     render() {
         const { estudiantes } = this.state;
-
         return (
             <div className="container-sm">
                 {estudiantes.length === 0 ? (
                     <div className="alert alert-info">No hay una lista de alumnos.</div>
+                    
                 ) : (
                     <table className="table table-dark table-striped table-bordered">
                         <thead className="thead-light">
