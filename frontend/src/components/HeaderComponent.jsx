@@ -41,6 +41,9 @@ class HeaderComponent extends Component {
                                 <button class="nav-link" onClick={()=>this.sendDataToParent("CargarNotas")}>Subir Notas</button>
                             </li>
                             <li class="nav-item">
+                                <button class="nav-link" onClick={()=>this.sendDataToParent("MostrarPlanilla")}>Mostrar planilla</button>
+                            </li>
+                            <li class="nav-item">
                                 <button class="nav-link" click={this.borrarTodo}>boton vaciar</button>
                             </li>
                         </ul>

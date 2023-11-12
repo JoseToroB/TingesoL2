@@ -9,6 +9,8 @@ import CrearEstudianteComponent from './components/CrearEstudiante';
 import CrearCuotaComponent from './components/CrearCuota';
 import ListarCuotasComponent from './components/ListarCuotas';
 import ModificarCuotaComponent from './components/modificarCuota';
+import CargarNotasComponent from './components/CargarNotas';
+import MostrarPlanillaComponent from './components/MostrarPlanilla';
 function App() {
   const [childData, setChildData] = useState('Home'); 
   function handleChildData (data) { 
@@ -26,6 +28,7 @@ function App() {
       {childData==="ListarCuotas" && <ListarCuotasComponent/>}
       {childData==="ModificarCuota" && <ModificarCuotaComponent/>}
       {childData==="CargarNotas" && <CargarNotasComponent/>}
+      {childData==="MostrarPlanilla" && <MostrarPlanillaComponent />}
       <ToastContainer />
     </div>
   );
