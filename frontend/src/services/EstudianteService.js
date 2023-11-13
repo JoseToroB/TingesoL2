@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = "http://localhost:8084/estudiante";
+const URL = "http://localhost:8080/estudiante";
 
 class EstudianteService{
     obtenerEstudiantes(){
@@ -9,7 +9,7 @@ class EstudianteService{
         return axios.post(URL +"/borrarEstudiantes")
     }
     crearEstudiante(estudiante){
-        return axios.post(URL,estudiante)
+        return axios.post(URL +"/crearEstudiante",estudiante)
     }
 }
 export default new EstudianteService()

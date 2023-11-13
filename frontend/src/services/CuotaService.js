@@ -11,10 +11,12 @@ class CuotaService{
         return axios.post(URL +"/borrarCuotas")
     }
     crearCuota(cuota){
-        return axios.post(URL,cuota)
+        return axios.post(URL +"/crearCuota",cuota)
     }
-    /*
+    
     marcarCuotaComoPagada(cuotaId){
-    */
+        return axios.post(URL +"/modificarCuota",cuotaId)
+    }
+    
 }
 export default new CuotaService()

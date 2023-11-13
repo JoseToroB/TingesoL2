@@ -9,7 +9,7 @@ class PruebaService{
         return axios.post(URL +"/borrarTodo")
     }
     subirPruebas(file){
-        return axios.post(URL,file)
+        return axios.post(URL +"/subirNotas",file)
     }
 }
 export default new PruebaService()

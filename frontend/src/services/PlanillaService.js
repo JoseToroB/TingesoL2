@@ -8,5 +8,8 @@ class PlanillaService{
     borrarTodo(){
         return axios.post(URL +"/borrarTodo")
     }
+    crearPlanilla(planilla){
+        return axios.post(URL +"/crearPlanilla",planilla)
+    }
 }
 export default new PlanillaService()

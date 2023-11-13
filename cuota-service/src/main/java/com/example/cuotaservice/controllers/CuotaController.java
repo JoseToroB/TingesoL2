@@ -35,8 +35,20 @@ public class CuotaController{
         cuotaService.guardarCuota(cuota);
     }
 
-    /*
-    modificar cuota segun la id
-     */
+    @PostMapping("/modificarCuota")
+    public void modificarCuota(long id) {
+        // Obtiene la cuota a modificar
+        CuotaEntity cuota = cuotaService.buscarPorId(id);
+
+        // Verifica si la cuota existe
+        if (cuota != null) {
+            // Modifica el parámetro deseado de la cuota en este caso, el parametro de pagado se cambia a "1"
+            cuota.setEstaPagado(1);
+            cuotaService.guardarCuota(cuota);
+        } else {
+
+        }
+    }
+}
 
 }

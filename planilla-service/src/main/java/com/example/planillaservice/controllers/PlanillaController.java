@@ -23,16 +23,11 @@ public class PlanillaController {
         }
         return ResponseEntity.ok(planillas);
     }
-    //obtener todas las planillas
+   @GetMapping("/calcularPlanilla")
+    public PlanillaEntity crearPlanilla(int id){
+        return planillaService.calcularPlanillaE(id);
+    }
 
-    /*listar planillas de un estudiante x idEstudiante*/
-   /* @GetMapping("/verResumen/{id}")
-    public String getUser(@PathVariable int id, Model model){
-        planillaService.calcularPlanillaE(id);
-        List<PlanillaEntity>planillas =planillaService.obtenerPlanillasEstudiante(id);
-        model.addAttribute("planillas",planillas);
-        return "mostrarResumen";
-    }*/
     @PostMapping("/borrarTodo")
     public void borrarTodo(){
         planillaService.borrarTodo();

@@ -21,5 +21,8 @@ public class CuotaService {
     public void borrarTodo(){
         cuotaRepository.deleteAll();
     }
+    public CuotaEntity buscarPorId(long id){
+        return cuotaRepository.findById(id);
+    }
 
 }

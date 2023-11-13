@@ -148,7 +148,7 @@ public class PlanillaService {
         }
         return null;
     }
-    public String calcularPlanillaE(int id){
+    public PlanillaEntity calcularPlanillaE(int id){
         //obtener todas las cuotas
         List<CuotaModel> cuotas = obtenerCuotas();
         List<CuotaModel> cuotasAlumno = filtrarCuotas(id,cuotas);
@@ -160,12 +160,13 @@ public class PlanillaService {
         //obtener los datos del alumno segun su id
         EstudianteModel alumno = obtenerAlumno(id);
         ///////////si no hay pruebas o cuotas//////
-        if(cuotas.isEmpty() || pruebas.isEmpty()){ //return al index
-            return "Error";
+        if(cuotas.isEmpty() || pruebas.isEmpty()){ 
+            System.out.println("error ");      
+            return null;//error
         }
         //recorrer pruebas y cuotas comparando fecha
-        int cantCuota=cuotas.size();
-        int cantPrueba=pruebas.size();
+        int cantCuota=cuotasAlumno.size();
+        int cantPrueba=pruebasAlumno.size();
         int i,j,puntaje,pagadas=0,atrasada=0,mesCuota,mesPrueba;
         float montoTotal=0,monto;
         float montoTotalpagado=0;
@@ -194,7 +195,8 @@ public class PlanillaService {
                     mesPrueba = Integer.parseInt(fechaPrueba[1]);
                 } catch (NumberFormatException e) {
                     System.out.println("error al transformar mes de la cuota/prueba en int");
-                    return "fallo str to int";}
+                    return null; //error
+                }
                 //si el mes de la cuota es menor al actual, esta atrasada ( el mes se inicializa con 0 ya que sino da error al compilar x el try)
 
                 //si esta atrasada se aumenta el monto
@@ -245,9 +247,10 @@ public class PlanillaService {
         planillaEntity.setCantidadPagada(montoTotalpagado);
         planillaEntity.setCuotasPagadas(pagadas);
         planillaEntity.setCantidadApagar(montoTotal-montoTotalpagado);
+        planillaEntity.setCuotasRetraso(atrasada);
         //se guarda la planilla
         planillaRepository.save(planillaEntity);
-        //se direcciona al index
-        return "index";
+        //se entrega la planilla
+        return planillaEntity;
     }
 }

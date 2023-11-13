@@ -19,16 +19,17 @@ public class PlanillaEntity {
     private int idEstudiante;
     private float cantidadTotal;
     private int cuotasApagar;
-    private String fechaCreacionPlanilla;
-    private String nombreEstudiante;
-    private String rutEstudiante;
-    private int cantidadPruebasRendidas;
-    private int promedioPruebas;
+    private String fechaCreacionPlanilla;//
+    private String nombreEstudiante;//
+    private String rutEstudiante;//
+    private int cantidadPruebasRendidas;//
+    private int promedioPruebas;//
     private String tipoPago;
     private String fechaUltimoPago;
     private int cuotasTotal;
     private float cantidadPagada;
     private int cuotasPagadas;
     private float cantidadApagar;
+    private int cuotasRetraso;
 
 }
