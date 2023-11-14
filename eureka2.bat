@@ -1,0 +1,1 @@
+docker build -f eureka-service/Dockerfile -t josetorob/eureka-service:latest ./eureka-service

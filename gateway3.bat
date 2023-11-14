@@ -1,0 +1,1 @@
+docker push josetorob/gateway-service:latest

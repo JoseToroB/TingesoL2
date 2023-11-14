@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prueba-deployment
+  labels:
+    app: prueba-deployment
+spec:
+  selector:
+    matchLabels:
+      app: prueba-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prueba-deployment
+    spec:
+      containers:
+        - name: prueba-service
+          image: josetorob/prueba-service
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://config-service:8081
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://eureka-service:8761
+            - name: eureka.instance.preferIpAddress
+              value: "true"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: prueba
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: prueba
+                  key: name
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-root-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-root-credentials
+                  key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prueba-service
+  labels:
+    app: prueba-service
+spec:
+  selector:
+    app: prueba-deployment
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+  type: LoadBalancer

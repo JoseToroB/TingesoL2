@@ -1,0 +1,1 @@
+docker build -f gateway-service/Dockerfile -t josetorob/gateway-service:latest ./gateway-service

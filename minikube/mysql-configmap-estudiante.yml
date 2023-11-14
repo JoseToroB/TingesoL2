@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: estudiante
+data:
+  host: mysql
+  name: estudiante
