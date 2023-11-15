@@ -1,1 +1,1 @@
-docker build -f prueba-service/Dockerfile -t josetorob/pruebaservice:latest ./prueba-service
+docker build -f prueba-service/Dockerfile -t josetorob/prueba-service:latest ./prueba-service
