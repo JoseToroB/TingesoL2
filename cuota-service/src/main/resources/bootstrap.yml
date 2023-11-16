@@ -5,22 +5,24 @@ eureka:
     service-url:
       defaultZone: http://eureka-service:8761/eureka/
 spring:
-  application:
-    name: cuota-service
   devtools:
     restart:
       aditional-paths: src/main/java
+  application:
+    name: cuota-service
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLDialect
+      ddl-auto: create
   cloud:
     config:
       enabled: true
       uri: http://localhost:8081
-  jpa:
-    show-sql: true
-    hibernate:
-      dialect: MySQL8Dialect
-      ddl-auto: create
   datasource:
+    plataform: mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?autorReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://${DB_HOST}:3306/${DB_NAME}?autorReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
