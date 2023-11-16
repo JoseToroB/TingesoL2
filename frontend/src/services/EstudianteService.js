@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = "http://localhost:8080/estudiante";
+const URL = "http://localhost:8083/estudiante";
 
 class EstudianteService{
     obtenerEstudiantes(){

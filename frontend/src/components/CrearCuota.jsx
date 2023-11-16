@@ -38,6 +38,7 @@ class CrearCuotaComponent extends Component{
         };
         CuotaService.crearCuota(cuota).then(res=>{
             //agregar cuota con el service
+            CuotaService.crearCuota(cuota);
             toast.success("Cuota creada con éxito", {
                 autoClose: 2000, // Duración en milisegundos (2 segundos)
             });
@@ -70,7 +71,7 @@ class CrearCuotaComponent extends Component{
                                     <div className="form-group">
                                         <label>idEstudiante:</label>
                                         <input placeholder="idEstudiante" name="idEstudiante" className="form-control"
-                                        value={this.state.idEstudiante} onChange={this.cambiarIdEstudianteHandler}/>
+                                        value={this.state.idEstudiante} onChange={this.cambioIdEstudianteHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>numeroCuota</label>
@@ -85,7 +86,7 @@ class CrearCuotaComponent extends Component{
                                     <div className="form-group">
                                         <label>montoAPagar</label>
                                         <input placeholder="MontoAPagar" name="montoAPagar" className="form-control"
-                                        value={this.state.montoAPagar} onChange={this.cambiarMontoAPagarHandler}/>
+                                        value={this.state.montoAPagar} onChange={this.cambiarMontoaPagarHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label>fechaPago</label>

@@ -6,14 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7599ec59-e83f-4be6-9683-fc42b7acc1cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-service/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cuota-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cuota-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estudiante-service/src/main/java/com/example/estudianteservice/controllers/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/estudiante-service/src/main/java/com/example/estudianteservice/controllers/EstudianteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeaderComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeaderComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HomeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HomeComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListarEstudiantes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ListarEstudiantes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estudiante-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/estudiante-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CrearCuota.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CrearCuota.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/CuotaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/CuotaService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/EstudianteService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/EstudianteService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/PlanillaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/PlanillaService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/PruebaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/PruebaService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minikube/mysql-deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/minikube/mysql-deployment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planilla-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/planilla-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prueba-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/prueba-service/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +144,8 @@
       <workItem from="1699564533196" duration="202000" />
       <workItem from="1699564868144" duration="21000" />
       <workItem from="1699574627063" duration="56000" />
+      <workItem from="1700126064591" duration="134000" />
+      <workItem from="1700127602925" duration="1264000" />
     </task>
     <servers />
   </component>

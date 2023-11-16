@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/cuota";
+const URL = "http://localhost:8082/cuota";
 /*
 arreglar las url base para los distintos llamados
 */

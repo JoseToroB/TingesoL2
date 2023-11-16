@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/planilla";
+const URL = "http://localhost:8084/planilla";
 
 class PlanillaService{
     obtenerPlanillas(){
